@@ -1,0 +1,20 @@
+
+const express = require('express')
+const router = express.Router()
+const StaffRoutes = require('./staffs.routes.js')
+const CustomerRoutes = require('./customer.routes.js')
+const CategoryRoutes = require('./category.routes.js')
+const BrandRoutes = require('./brand.routes.js')
+const ProductRoutes = require('./product.routes.js')
+const ReviewsRoutes= require('./reviews.routes.js')
+const OrdersRoutes = require('./orders.routes.js') 
+const { adminAccess } = require('../../authlib')
+router.use('/staffs',adminAccess, StaffRoutes)
+router.use('/customer', CustomerRoutes)
+router.use('/category', CategoryRoutes)
+router.use('/brand', BrandRoutes)
+router.use('/product', ProductRoutes)
+router.use('/reviews', ReviewsRoutes)
+router.use('/orders', OrdersRoutes)
+
+module.exports= router
