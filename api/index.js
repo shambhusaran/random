@@ -1,11 +1,13 @@
 const express = require("express");
 const mongoose = require("mongoose");
+const cors = require('cors')
 const { config } = require("dotenv");
 
 const router = require("./routes");
 config();
 const app = express();
 app.use(express.json()); ////middleware to recognize json data from req.body
+app.use(cors())
 
 app.use("/api", router);
 

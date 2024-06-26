@@ -42,6 +42,7 @@ const validationHandler = (errors, next)=>{
     return next({
         message: 'Validation error occured',
         errors,
+        status:422
     })
 }
 

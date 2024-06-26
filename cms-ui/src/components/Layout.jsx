@@ -4,13 +4,18 @@ import "./Layout.css"
 import { Outlet } from "react-router-dom"
 import { CmsMenu } from "./CmsMenu"
 import { Container, Row } from "react-bootstrap"
-export const Layout =()=>{
+import { List } from "../pages/dashboard"
+import { CmsRoutes } from "../routes/CmsRoutes"
+export const Layout = () => {
     return <>
-    <CmsMenu/>
-<Container>
-    <Row>
-        <Outlet/>
-    </Row>
-</Container>
+        <CmsMenu />
+        <Container>
+   
+            <Row>
+                <Outlet />
+                {/* <List /> */}
+            </Row>
+
+        </Container>
     </>
 }

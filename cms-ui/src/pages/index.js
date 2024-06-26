@@ -1,4 +1,5 @@
-import * as Dashboard from "@pages/dashboard"
+import * as Dashboard from "./dashboard"
+import * as Auth from "./auth"
 
 
-export {Dashboard}
+export {Dashboard, Auth}

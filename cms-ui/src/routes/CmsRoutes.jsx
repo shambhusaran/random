@@ -7,6 +7,7 @@ export const CmsRoutes = () =>{
     <Routes>
         <Route path= "/" element = {<Layout/>}>
             <Route index element = {<Pages.Dashboard.List/>}/>
+            <Route path ="/login" element= {<Pages.Auth.Login/>}/>
         </Route>
     </Routes>
     </BrowserRouter>
