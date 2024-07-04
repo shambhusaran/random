@@ -23,7 +23,7 @@ class ProfileController {
         name,
         contact,
         address,
-      });
+      },{runValidators: true});
       resp.send({
         message: "Profile updated sucessfully",
       });

@@ -1,12 +1,13 @@
 import { Form } from "react-bootstrap"
 
 
-export const InputField = ({label, type = "text", formik, name}) => {
+export const InputField = ({label, type = "text", formik, name, as}) => {
   return (
     <Form.Group className="mb-3">
     <Form.Label htmlFor={name}> {label}</Form.Label>
     <Form.Control
-      type= {type}
+      type= {!as? type : ''}
+      as = {as}
       name={name}
       id={name}
       value={type == 'password'? undefined: formik.values[name]}

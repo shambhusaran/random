@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Button, Col, Form, Row } from "react-bootstrap";
 import * as Yup from "yup";
 import { toast } from "react-toastify";
-import { storeData } from "../../lib";
+import { handleValidation, storeData } from "../../lib";
 import { useDispatch } from "react-redux";
 import { setUser } from "../../store";
 import { useNavigate } from "react-router-dom";
@@ -33,27 +33,20 @@ export const Login = () => {
     onSubmit: (values, { setSubmitting }) => {
       http
         .post("/auth/login", values)
+       
         .then(({ data }) => {
+  
           storeData("user-token", data.token, rememberMe);
           return http.get("/profile");
         })
-
         .then(({ data }) => {
           dispatch(setUser(data));
           navigate("/");
         })
         // .catch(({response})=>toast.error(response.data.errors[0]))
 
-        .catch(({ response }) => {
-          if ("errors" in response?.data) {
-            // const {errors} = response.data
-            // for(let k in errors){
-            //   formik.setFieldError(k, errors[k])
-            // }
-
-            formik.setErrors(response.data.errors);
-          }
-        })
+        .catch(( response ) =>handleValidation(response, formik)
+        )
         .finally(() => setSubmitting(false));
     },
   });

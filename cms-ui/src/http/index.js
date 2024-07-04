@@ -20,18 +20,24 @@ http.interceptors.request.use(
 );
 
 http.interceptors.response.use(
+
+
   (resp) => {
+
     if ('message' in resp?.data){
         toast.success(resp.data.message)
     }
     return resp;
   },
-
+  
   (err) => {
     if ("message" in err?.response.data) {
+  
       toast.error(err.response.data.message);
     }
     return Promise.reject(err);
-  }
+  },
+
+
 );
 export default http;
